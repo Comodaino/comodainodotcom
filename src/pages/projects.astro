@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/layout.astro';
+
+const projects = [
+    { title: "Computer Vision homework", url: "https://github.com/Comodaino" , caption: "Part of my Image Analysis and Computer Vision exam, this was an homework everyone attending the course had to do. It consists in extracting various features in a photo and then extracting a 3D model of it"},
+    { title: "Computer Vision homework", url: "https://github.com/Comodaino" , caption: "Part of my Image Analysis and Computer Vision exam, it uses Computer Vision to identify notable features of a vehicle to then extract it's position using an Iterative method"},
+    { title: "Embedded Systems", url: "https://github.com/Comodaino" , caption: "Embedded Systems cap"},
+    { title: "Field Robotics Event", url: "https://github.com/Comodaino" , caption: "Embedded Systems cap"},
+];
+const videos = [
+    { title: "Arduino: Step-by-step project", url: "https://www.youtube.com/embed/JMGV5QluGt0?si=RoPt-ipnIsNxZ2hH" },
+    { title: "Game dev: Game engines behind the scenes", url: "https://www.youtube.com/embed/sh9v83BvckQ?si=-eW-g3abDb-49ajx" },
+];
+---
+
+<Layout title="Projects">
+    <h2 class="text-3xl font-bold mb-8 text-center">My projects and lectures</h2>
+    <div class="grid md:grid-rows-2 gap-8">
+        <div class="grid md:grid-cols-4 gap-8">
+            {projects.map((video) => (
+                    <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold dark:text-white">{video.title}</h3>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl dark:text-white">{video.caption}</h3>
+                        </div>
+                    </div>
+            ))}
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+            {videos.map((video) => (
+                    <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
+                        <div class="aspect-video">
+                            <iframe
+                                    class="w-full h-full"
+                                    src={video.url}
+                                    title={video.title}
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold dark:text-white">{video.title}</h3>
+                        </div>
+                    </div>
+            ))}
+        </div>
+    </div>
+</Layout>

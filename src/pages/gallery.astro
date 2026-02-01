@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/layout.astro';
+
+const images = [
+    { src: "https://cards.scryfall.io/large/front/b/9/b9640cbf-b016-410e-9eff-e8924883517b.jpg?1673147456", alt: "Bitterblossom by Rebecca Guay" },
+    { src: "https://cards.scryfall.io/large/front/5/8/58aa273f-9ec7-4024-b30e-e75fa404de72.jpg?1758924052", alt: "Bitterbloom Bearer by Taryn Knight" },
+    { src: "https://cards.scryfall.io/large/front/6/d/6d1ebec8-b6d3-4695-812c-06d078ff3a2f.jpg?1593867210", alt: "Liliana, Dreadhorde General by Yoshitaka Amano" },
+    { src: "https://cards.scryfall.io/large/front/a/c/ac2e32d0-f172-4934-9d73-1bc2ab86586e.jpg?1562781784", alt: "Dandân by Drew Tucker" },
+    { src: "https://cards.scryfall.io/large/front/3/0/3009ba46-c9f8-46dc-8ffc-2aa4cef7b17c.jpg?1623779988", alt: "Demonic Tutor by Anato Finnstark" },
+    { src: "https://cards.scryfall.io/large/front/4/4/443b6f30-1493-4d48-93d9-a91e22a7ebb3.jpg?1767952037", alt: "Twilight Divine by Pauline Voss" }
+];
+---
+
+<Layout title="Gallery">
+    <h2 class="text-3xl font-bold mb-8 text-center">Gallery of things that i like</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {images.map((img) => (
+                <div class="relative group overflow-hidden rounded-xl shadow-lg aspect-square">
+                    <img
+                            src={img.src}
+                            alt={img.alt}
+                            class="object-cover w-full  transform transition duration-500 group-hover:scale-110"
+                    />
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition duration-300 flex items-center justify-center">
+                        <span class="text-white opacity-0 group-hover:opacity-100 font-bold text-lg">{img.alt}</span>
+                    </div>
+                </div>
+        ))}
+    </div>
+</Layout>
