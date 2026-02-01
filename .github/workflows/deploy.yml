@@ -1,4 +1,4 @@
-name: Deploy Astro to Server
+name: Deploy to server
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             # Navigate to project folder (Change this path to your server's path)
-            cd ~/my-astro-project
+            cd ~/comodainodotcom
             
             # Pull latest code
             git pull origin main
