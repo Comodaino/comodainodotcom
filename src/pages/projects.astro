@@ -2,10 +2,22 @@
 import Layout from '../layouts/layout.astro';
 
 const projects = [
-    { title: "Computer Vision homework", url: "https://github.com/Comodaino" , caption: "Part of my Image Analysis and Computer Vision exam, this was an homework everyone attending the course had to do. It consists in extracting various features in a photo and then extracting a 3D model of it"},
-    { title: "Computer Vision homework", url: "https://github.com/Comodaino" , caption: "Part of my Image Analysis and Computer Vision exam, it uses Computer Vision to identify notable features of a vehicle to then extract it's position using an Iterative method"},
-    { title: "Embedded Systems", url: "https://github.com/Comodaino" , caption: "Embedded Systems cap"},
-    { title: "Field Robotics Event", url: "https://github.com/Comodaino" , caption: "Embedded Systems cap"},
+    { title: "Car Pose Estimation using Out-of-Plane Symmetric Features", url: "https://github.com/Comodaino/IACV-project", caption: "This project uses computer vision techniques to estimate the 3D pose of a car from a 2D image by extracting and analyzing specific features. " +
+            "The implementation is written in Python and uses deep learning models (YOLO-based instance segmentation) for feature extraction, combined with geometric methods for pose estimation.",
+        image: "public/projects_images/pose_estimation.png"
+    },
+    { title: "Computer Vision homework", url: "https://github.com/Comodaino/IACV-Homework-2024-2025" , caption: "Part of my Image Analysis and Computer Vision exam, this was an homework everyone attending the course had to do. It consists in extracting various features in a photo and then extracting a 3D model of it",
+        image: "public/projects_images/lines.png"},
+    { title: "Snack Advisor", url: "https://github.com/Comodaino" , caption: "Project for the Design and Implementation of Mobile Applications, it's an application to aid PoliMi's students find a working vending machine for their breaks."+
+            "It's implemented in Flutter, released for both android and web. It uses Google's Firebase as the backend, database and authentication service, while maps are provided by OpenStreetMap",
+        image: "public/projects_images/gif1.gif"},
+    { title: "SlimebotAndSquee", url: "https://github.com/Comodaino/slimebotAndSquee", caption: "A simple telegram bot to use as interface for the website scryfall.com, it's possible to use it by either chatting with it or adding it to a group chat and each time a " +
+            "card is named between two braces, the card mentioned is displayed in the chat",
+        image: "public/projects_images/gif1.gif"},
+    { title: "Gioco dove sei un'automobile e spari proiettili a camioncini del gelato", url: "https://github.com/Comodaino/computer-graphics-project-2024",caption: "The project consists in a simple videogame made from scratch using vulkan. The game itself consist in a simple top-view shooter game with the restriction of being able to move like a car.",
+        image: "public/projects_images/gif1.gif"},
+    { title: "Miosix Calculator", url: "https://github.com/Comodaino/miosix-calculator" , caption: "Embedded Systems project, simple calculator on a STM32F4 using the miosix RTOS. The calculation is handled by the microcontroller using flex and bison, input parsing and calculation done simultaneously",
+    },
 ];
 const videos = [
     { title: "Arduino: Step-by-step project", url: "https://www.youtube.com/embed/JMGV5QluGt0?si=RoPt-ipnIsNxZ2hH" },
@@ -16,21 +28,52 @@ const videos = [
 <Layout title="Projects">
     <h2 class="text-3xl font-bold mb-8 text-center">My projects and lectures</h2>
     <div class="grid md:grid-rows-2 gap-8">
-        <div class="grid md:grid-cols-4 gap-8">
-            {projects.map((video) => (
-                    <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
-                        <div class="p-4">
-                            <h3 class="text-xl font-bold dark:text-white">{video.title}</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+            {projects.map((project) => (
+                    <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 flex flex-col group">
+
+                        <div class="p-6 pb-2">
+                            <h3 class="text-xl font-bold dark:text-white transition-colors">
+                                {project.title}
+                            </h3>
                         </div>
-                        <div class="p-4">
-                            <h3 class="text-xl dark:text-white">{video.caption}</h3>
+
+                        <div class="px-6 py-2">
+                            <a
+                                    href={project.url}
+                                    class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                            >
+                                View Repository
+                                <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+                            </a>
                         </div>
+
+                        <div class="p-6 pt-2 flex-grow">
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                {project.caption}
+                            </p>
+                        </div>
+
+                        {project.image && (
+                                <div class="p-4 pt-0">
+                                    <div class="flex gap-3 overflow-x-auto pb-4 no-scrollbar snap-x">
+                                            <div class="flex-shrink-0 w-full aspect-video rounded-lg overflow-hidden shadow-md border-2 border-slate-100 dark:border-slate-700 snap-center">
+                                                <img
+                                                        src={project.image}
+                                                        alt={project.title}
+                                                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                                />
+                                            </div>
+                                    </div>
+                                </div>
+                        )}
                     </div>
+
             ))}
         </div>
         <div class="grid md:grid-cols-2 gap-8">
             {videos.map((video) => (
-                    <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
+                    <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 h-1/2">
                         <div class="aspect-video">
                             <iframe
                                     class="w-full h-full"
